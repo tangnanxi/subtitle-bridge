@@ -31,7 +31,39 @@ Subtitle Bridge loads existing subtitle text. It does **not** transcribe audio, 
 
 ## Subtitle languages
 
-Choose from **28 language options**: Chinese, English, Spanish, Portuguese, French, German, Italian, Japanese, Korean, Russian, Ukrainian, Arabic, Hindi, Indonesian, Malay, Vietnamese, Thai, Turkish, Dutch, Polish, Swedish, Danish, Norwegian, Finnish, Greek, Hebrew, Persian, and Romanian. **All languages** remains available.
+The **28 language options** below follow the exact order of the popup selector. **All languages** is the final entry.
+
+| # | Subtitle language |
+| --- | --- |
+| 1 | Chinese (Simplified / Traditional) |
+| 2 | English |
+| 3 | Spanish |
+| 4 | Portuguese (Portugal / Brazil) |
+| 5 | French |
+| 6 | German |
+| 7 | Italian |
+| 8 | Japanese |
+| 9 | Korean |
+| 10 | Russian |
+| 11 | Ukrainian |
+| 12 | Arabic |
+| 13 | Hindi |
+| 14 | Indonesian |
+| 15 | Malay |
+| 16 | Vietnamese |
+| 17 | Thai |
+| 18 | Turkish |
+| 19 | Dutch |
+| 20 | Polish |
+| 21 | Swedish |
+| 22 | Danish |
+| 23 | Norwegian |
+| 24 | Finnish |
+| 25 | Greek |
+| 26 | Hebrew |
+| 27 | Persian |
+| 28 | Romanian |
+| 29 | All languages |
 
 Spanish searches include general, Spain, and Latin American entries; Portuguese includes Portuguese and Brazilian entries. **Include English** works with each non-English selection. Your selection is saved locally. Available files depend on the subtitle source.
 

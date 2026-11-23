@@ -31,7 +31,39 @@
 
 ## 字幕语言
 
-提供 **28 个语言选项**：中文、英语、西班牙语、葡萄牙语、法语、德语、意大利语、日语、韩语、俄语、乌克兰语、阿拉伯语、印地语、印尼语、马来语、越南语、泰语、土耳其语、荷兰语、波兰语、瑞典语、丹麦语、挪威语、芬兰语、希腊语、希伯来语、波斯语和罗马尼亚语，并保留 **All languages**。
+以下 **28 个语言选项**与插件下拉框顺序一致，最后一项是 **All languages（全部语言）**。
+
+| 顺序 | 字幕语言 | 弹窗中的选项 |
+| --- | --- | --- |
+| 1 | 中文（简体 / 繁体） | Chinese (Simplified / Traditional) |
+| 2 | 英语 | English |
+| 3 | 西班牙语 | Spanish |
+| 4 | 葡萄牙语（葡萄牙 / 巴西） | Portuguese (Portugal / Brazil) |
+| 5 | 法语 | French |
+| 6 | 德语 | German |
+| 7 | 意大利语 | Italian |
+| 8 | 日语 | Japanese |
+| 9 | 韩语 | Korean |
+| 10 | 俄语 | Russian |
+| 11 | 乌克兰语 | Ukrainian |
+| 12 | 阿拉伯语 | Arabic |
+| 13 | 印地语 | Hindi |
+| 14 | 印尼语 | Indonesian |
+| 15 | 马来语 | Malay |
+| 16 | 越南语 | Vietnamese |
+| 17 | 泰语 | Thai |
+| 18 | 土耳其语 | Turkish |
+| 19 | 荷兰语 | Dutch |
+| 20 | 波兰语 | Polish |
+| 21 | 瑞典语 | Swedish |
+| 22 | 丹麦语 | Danish |
+| 23 | 挪威语 | Norwegian |
+| 24 | 芬兰语 | Finnish |
+| 25 | 希腊语 | Greek |
+| 26 | 希伯来语 | Hebrew |
+| 27 | 波斯语 | Persian |
+| 28 | 罗马尼亚语 | Romanian |
+| 29 | 全部语言 | All languages |
 
 选择西班牙语时会同时查询通用、西班牙和拉美版本；葡萄牙语同时查询葡萄牙语和巴西版本。所有非英语选项均可勾选 **Include English**，语言偏好会保存在本机。是否有字幕文件仍取决于字幕源。
 
