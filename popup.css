@@ -1,0 +1,64 @@
+:root{color-scheme:light;--paper:#f8faf8;--ink:#192b24;--muted:#52655b;--line:#d5dfd8;--accent:#236342;--soft:#e9f1eb;--error:#a32929;--radius:8px}
+*{box-sizing:border-box}
+body{width:400px;margin:0;color:var(--ink);background:var(--paper);font:14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{padding:20px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+h1{font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:0;font-weight:700}
+.tag,.hint,footer{color:var(--muted);font-size:12px}
+.tag{white-space:nowrap}
+.row{display:flex;align-items:center;gap:8px}
+.player{padding:12px;background:var(--soft);border-radius:var(--radius);margin-bottom:20px}
+.player>.row{justify-content:space-between}
+#video-status{font-weight:600;font-size:13px}
+#video{margin-top:9px;width:100%}
+#frame-access{margin-top:10px;width:100%}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input,select,button,.file-button{font:inherit}
+input[type=search],select{min-width:0;width:100%;height:38px;border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff;color:var(--ink);caret-color:var(--accent)}
+.language-row{margin-top:10px}
+.language-row label{margin:0;white-space:nowrap;font-size:12px;font-weight:400}
+.language-row select{height:32px;font-size:12px}
+.check.english-choice{margin-top:9px}
+#language-note{margin:6px 0 0}
+#matched-title{margin:8px 0;font-weight:600;overflow-wrap:anywhere}
+input::placeholder{color:var(--muted)}
+button,.file-button{min-height:34px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);padding:5px 10px;white-space:nowrap;cursor:pointer;font-size:13px;font-weight:600}
+button:hover,.file-button:hover{background:var(--soft)}
+button:disabled{opacity:.5;cursor:wait}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);height:38px}
+button.primary:hover{background:#174e32}
+button.quiet{border:0;background:transparent;padding:2px 4px;min-height:28px;color:var(--accent);font-size:12px}
+button.quiet:hover{text-decoration:underline;text-underline-offset:3px}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:#c4e4cf;color:#102c1d}
+button:active,.file-button:active{transform:translateY(1px)}
+#message{font-size:12px;min-height:20px;margin:10px 0;color:var(--muted);overflow-wrap:anywhere}
+#message.error{color:var(--error)}
+#results{max-height:230px;overflow:auto;scrollbar-width:thin;scrollbar-color:#93ac9c transparent}
+.result{padding:11px 0;border-top:1px solid var(--line)}
+.result-title{font-size:13px;font-weight:600;margin:0 0 3px;overflow-wrap:anywhere}
+.result-info{font-size:12px;color:var(--muted);margin:0 0 6px;overflow-wrap:anywhere}
+.result button{font-size:12px;min-height:29px;padding:3px 8px}
+.result .add-second{margin-left:8px}
+.import-row{display:flex;align-items:center;gap:12px;padding:12px 0 16px}
+.file-button{display:inline-flex;align-items:center;margin:0;font-size:12px}
+#file{position:absolute;width:1px;height:1px;opacity:0}
+.import-row:focus-within .file-button{outline:2px solid var(--accent);outline-offset:3px}
+.loaded{border-top:1px solid var(--line);padding-top:12px}
+.filename{margin:0 0 8px;font-size:12px;font-weight:600;overflow-wrap:anywhere}
+fieldset{margin:0;padding:0;border:0;min-width:0}
+fieldset>.row{margin-bottom:8px;justify-content:space-between}
+fieldset:disabled{opacity:.5}
+.check{display:flex;align-items:center;gap:6px;margin:0;font-size:12px;font-weight:400}
+input[type=checkbox]{accent-color:var(--accent);margin:0}
+.sync{gap:5px;font-size:12px}
+.sync button{min-height:29px;font-size:11px;padding:3px 5px}
+.sync output{font-variant-numeric:tabular-nums;white-space:nowrap;min-width:52px;text-align:center}
+input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+fieldset label[for=font-size]{font-size:12px;margin:0;font-weight:400}
+#font-value{font-size:12px;min-width:20px;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:11px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){button:active,.file-button:active{transform:none}}

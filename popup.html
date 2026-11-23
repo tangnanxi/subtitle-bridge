@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subtitle Bridge</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header><h1>Subtitle Bridge</h1><span class="tag">Subtitles in sync</span></header>
+    <section class="player" aria-label="Current video">
+      <div class="row"><span id="video-status">Detecting video…</span><button id="detect" class="quiet" type="button">Detect again</button></div>
+      <select id="video" aria-label="Choose a video for subtitles" hidden></select>
+      <button id="frame-access" class="secondary" type="button" hidden>Enable embedded players</button>
+      <p id="frame-note" class="hint" hidden>Cross-site players need access to all websites. Detection runs only when you open the popup or click Detect again.</p>
+    </section>
+
+    <form id="search-form">
+      <label for="query">Movie or series title</label>
+      <div class="row search-row"><input id="query" type="search" placeholder="Title / S01E01" maxlength="160" required><button id="search" class="primary" type="submit">Find subtitles</button></div>
+      <div class="row language-row"><label for="language">Subtitle language</label><select id="language"><option value="zh,zt">Chinese (Simplified / Traditional)</option><option value="en">English</option><option value="ja">Japanese</option><option value="ko">Korean</option><option value="">All languages</option></select></div>
+      <label class="check english-choice" for="include-english"><input id="include-english" type="checkbox" checked>Include English</label>
+      <p id="language-note" class="hint">Load subtitles to automatically pair English with your selected language. Existing bilingual files are used as-is.</p>
+    </form>
+    <p id="message" role="status" aria-live="polite">Search by title, or import a subtitle file.</p>
+    <p id="matched-title" class="hint" hidden></p>
+    <div id="results" aria-label="Subtitle search results"></div>
+
+    <div class="import-row"><label class="file-button" for="file">Import subtitles</label><input id="file" type="file" accept=".srt,.vtt,.ass,.ssa"><span class="hint">SRT / VTT / ASS</span></div>
+
+    <section class="loaded" aria-label="Loaded subtitles">
+      <p id="loaded-name" class="filename">No subtitles loaded</p>
+      <fieldset id="controls" disabled>
+        <legend class="sr-only">Subtitle display and timing</legend>
+        <div class="row"><label for="visible" class="check"><input id="visible" type="checkbox" checked>Show subtitles</label><button id="clear" class="quiet" type="button">Remove</button></div>
+        <div class="row sync"><span>Timing</span><button id="earlier" type="button" aria-label="Show subtitles half a second earlier">−0.5 s</button><output id="offset" aria-live="polite">0.0 s</output><button id="later" type="button" aria-label="Show subtitles half a second later">+0.5 s</button><button id="reset" class="quiet" type="button">Reset</button></div>
+        <div class="row"><label for="font-size">Font size</label><input id="font-size" type="range" min="16" max="42" value="24"><output id="font-value" for="font-size">24</output></div>
+      </fieldset>
+    </section>
+
+    <footer>Subtitles from <a href="https://thesubtitledb.org" target="_blank" rel="noreferrer">The Subtitle DB</a> · No account or key needed. Check the release matches your video.</footer>
+  </main>
+  <script src="subtitles.js"></script>
+  <script src="provider.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
