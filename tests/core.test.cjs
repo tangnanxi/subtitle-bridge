@@ -99,12 +99,38 @@ test('Include English works with every selected language without duplicate Engli
   let languages=[];
   global.fetch = async url => {languages.push(url.searchParams.get('lang'));return new Response(JSON.stringify({subtitles:{items:[]}}));};
   try {
-    for (const [selected, expected] of [['zh,zt',['zh,zt','en']],['ja',['ja','en']],['ko',['ko','en']],['en',['en']],['',[null]]]) {
+    for (const [selected, expected] of [['zh,zt',['zh,zt','en']],['ja',['ja','en']],['ko',['ko','en']],['es,sp,ea',['es,sp,ea','en']],['pt,pb',['pt,pb','en']],['fr',['fr','en']],['ar',['ar','en']],['en',['en']],['',[null]]]) {
       languages=[];
       await source.search('Movie',selected,true); assert.deepEqual(languages,expected);
     }
     languages=[]; await source.search('Movie','ja',false); assert.deepEqual(languages,['ja']);
   } finally {global.fetch=original;}
+});
+
+test('All popup languages use supported filters and readable result labels', async () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const html = fs.readFileSync(path.join(path.dirname(require.resolve('../provider.js')), 'popup.html'), 'utf8');
+  const select = html.match(/<select id="language">([\s\S]*?)<\/select>/)[1];
+  const options = [...select.matchAll(/<option value="([^"]*)">([^<]+)<\/option>/g)];
+  assert.equal(options.length, 29);
+  const original = global.fetch;
+  try {
+    for (const [,filter,label] of options) {
+      const code = filter.split(',')[0] || 'en';
+      global.fetch = async url => {
+        assert.equal(url.searchParams.get('lang'), filter || null);
+        return new Response(JSON.stringify({subtitles:{items:[{id:1,release_name:'Movie',language:code,format:'srt',download_url:'https://api.thesubtitledb.org/get/1'}]}}));
+      };
+      const result = await source.search('Movie',filter);
+      assert.notEqual(result.rows[0].language,code,label);
+    }
+    for (const code of ['pb','sp','ea']) {
+      global.fetch=async()=>new Response(JSON.stringify({subtitles:{items:[{id:1,release_name:'Movie',language:code,format:'srt',download_url:'https://api.thesubtitledb.org/get/1'}]}}));
+      assert.match((await source.search('Movie',code)).rows[0].language,/Brazil|Spain|Latin America/);
+    }
+    for (const filter of ['xx','es,xx','es,,en','__proto__']) await assert.rejects(()=>source.search('Movie',filter),/supported subtitle language/);
+  } finally { global.fetch=original; }
 });
 
 test('Bilingual filenames rank first only when Include English is enabled; dual audio is not a subtitle hint', async () => {

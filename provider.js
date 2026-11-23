@@ -1,8 +1,17 @@
 (function (root) {
   'use strict';
   const API = 'https://api.thesubtitledb.org';
-  const CLIENT = 'subtitle-bridge/0.3.5';
-  const languages = {zh: 'Simplified Chinese', zt: 'Traditional Chinese', en: 'English', ja: 'Japanese', ko: 'Korean'};
+  const CLIENT = 'subtitle-bridge/0.3.6';
+  const languages = {
+    zh: 'Simplified Chinese', zt: 'Traditional Chinese', en: 'English',
+    es: 'Spanish', sp: 'Spanish (Spain)', ea: 'Spanish (Latin America)',
+    pt: 'Portuguese', pb: 'Portuguese (Brazil)',
+    fr: 'French', de: 'German', it: 'Italian', ja: 'Japanese', ko: 'Korean',
+    ru: 'Russian', uk: 'Ukrainian', ar: 'Arabic', hi: 'Hindi', id: 'Indonesian',
+    ms: 'Malay', vi: 'Vietnamese', th: 'Thai', tr: 'Turkish', nl: 'Dutch',
+    pl: 'Polish', sv: 'Swedish', da: 'Danish', no: 'Norwegian', fi: 'Finnish',
+    el: 'Greek', he: 'Hebrew', fa: 'Persian', ro: 'Romanian'
+  };
 
   function safeDownload(address) {
     const url = new URL(address);
@@ -33,7 +42,7 @@
   async function search(query, language = 'zh,zt', includeEnglish = false) {
     query = String(query).trim();
     if (!query) throw new Error('Enter a movie or series title, or an IMDb ID.');
-    if (!['zh,zt', 'zh', 'zt', 'en', 'ja', 'ko', ''].includes(language) || typeof includeEnglish !== 'boolean') throw new Error('Choose a supported subtitle language.');
+    if (typeof language !== 'string' || (language !== '' && (language.split(',').length > 16 || !language.split(',').every(code => Object.hasOwn(languages, code)))) || typeof includeEnglish !== 'boolean') throw new Error('Choose a supported subtitle language.');
     const paired = includeEnglish && Boolean(language) && language !== 'en';
     if (paired) {
       // A combined API filter can fill the result limit with English and omit

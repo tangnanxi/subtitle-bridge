@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const VERSION = '0.3.5';
+  const VERSION = '0.3.6';
   const DISPOSE_EVENT = 'subtitle-bridge-dispose';
   const previous = globalThis.SubtitleBridgePlayer;
   if (previous?.version === VERSION) return;

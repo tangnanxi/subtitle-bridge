@@ -265,7 +265,7 @@
   run(null, async () => {
     await chrome.storage.local.setAccessLevel({accessLevel: 'TRUSTED_CONTEXTS'});
     const saved = await chrome.storage.local.get(['fontSize', 'subtitleLanguage', 'includeEnglish']);
-    if (['zh,zt', 'en', 'ja', 'ko', ''].includes(saved.subtitleLanguage)) $('language').value = saved.subtitleLanguage;
+    if (Array.from($('language').options).some(option => option.value === saved.subtitleLanguage)) $('language').value = saved.subtitleLanguage;
     if (typeof saved.includeEnglish === 'boolean') $('include-english').checked = saved.includeEnglish;
     languageNote();
     if (saved.fontSize) $('font-size').value = saved.fontSize;

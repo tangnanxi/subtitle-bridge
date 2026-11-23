@@ -29,11 +29,17 @@ English · [简体中文](README.zh-CN.md)
 
 Subtitle Bridge loads existing subtitle text. It does **not** transcribe audio, translate missing languages, or provide movies.
 
+## Subtitle languages
+
+Choose from **28 language options**: Chinese, English, Spanish, Portuguese, French, German, Italian, Japanese, Korean, Russian, Ukrainian, Arabic, Hindi, Indonesian, Malay, Vietnamese, Thai, Turkish, Dutch, Polish, Swedish, Danish, Norwegian, Finnish, Greek, Hebrew, Persian, and Romanian. **All languages** remains available.
+
+Spanish searches include general, Spain, and Latin American entries; Portuguese includes Portuguese and Brazilian entries. **Include English** works with each non-English selection. Your selection is saved locally. Available files depend on the subtitle source.
+
 ## 1. Install the extension
 
 You do not need to install Node.js, run commands, or start a service.
 
-1. Open [Releases](https://github.com/tangnanxi/subtitle-bridge/releases/latest) and download **`subtitle-bridge-chrome-edge-v0.3.5.zip`** from **Assets**.
+1. Open [Releases](https://github.com/tangnanxi/subtitle-bridge/releases/latest) and download **`subtitle-bridge-chrome-edge-v0.3.6.zip`** from **Assets**.
 2. Extract the ZIP. Find the **`subtitle-bridge`** folder containing **`manifest.json`**.
 3. Open the extension-management page for your browser:
 
@@ -85,10 +91,10 @@ The **Matched** line identifies the title returned by the subtitle source. Check
 
 ### Watch with your language + English
 
-Keep **Include English** checked before searching and loading. It is a single option that works with Chinese, Japanese, or Korean; there is no separate “Chinese + English” language entry.
+Keep **Include English** checked before searching and loading. It is a single option that works with any selected non-English language; there is no separate “Chinese + English” language entry.
 
 - Files whose names suggest bilingual subtitles appear first.
-- If the selected file already contains bilingual dialogue, the extension uses that file without adding another English file.
+- If bilingual dialogue is recognized in the selected file, the extension uses that file without adding another English file.
 - Otherwise, **Load subtitles** tries to pair and load English automatically. The loaded-files section shows **`2 files`** when both are attached.
 - If no compatible English file can be found or downloaded, your selected file still loads and the popup explains the English failure.
 - To choose a second file yourself, load the first file, then click **Add second** on another result. **Replace second** swaps that second file while keeping the first.
