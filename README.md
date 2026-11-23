@@ -71,7 +71,7 @@ Spanish searches include general, Spain, and Latin American entries; Portuguese 
 
 You do not need to install Node.js, run commands, or start a service.
 
-1. Open [Releases](https://github.com/tangnanxi/subtitle-bridge/releases/latest) and download **`subtitle-bridge-chrome-edge-v0.3.6.zip`** from **Assets**.
+1. Open [Releases](https://github.com/tangnanxi/subtitle-bridge/releases/latest) and download **`subtitle-bridge-chrome-edge-v0.3.7.zip`** from **Assets**.
 2. Extract the ZIP. Find the **`subtitle-bridge`** folder containing **`manifest.json`**.
 3. Open the extension-management page for your browser:
 
@@ -125,7 +125,7 @@ The **Matched** line identifies the title returned by the subtitle source. Check
 
 Keep **Include English** checked before searching and loading. It is a single option that works with any selected non-English language; there is no separate “Chinese + English” language entry.
 
-- Files whose names suggest bilingual subtitles appear first.
+- Results in your selected language appear first. Bilingual filename hints only affect ordering within the same language group; supplemental English results follow. Automatic English pairing skips files marked bilingual to avoid adding an unexpected third language; those files remain available for manual selection.
 - If bilingual dialogue is recognized in the selected file, the extension uses that file without adding another English file.
 - Otherwise, **Load subtitles** tries to pair and load English automatically. The loaded-files section shows **`2 files`** when both are attached.
 - If no compatible English file can be found or downloaded, your selected file still loads and the popup explains the English failure.

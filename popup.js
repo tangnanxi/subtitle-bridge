@@ -207,7 +207,12 @@
     selected = entries.find(entry => `${entry.frameId}:${entry.id}` === $('video').value);
     renderLoaded(selected);
   });
-  $('language').addEventListener('change', languageNote);
+  $('language').addEventListener('change', () => {
+    languageNote();
+    $('results').replaceChildren();
+    $('matched-title').hidden = true;
+    message('Language changed. Click Find subtitles to search again.');
+  });
   $('include-english').addEventListener('change', () => run(null, async () => {
     languageNote();
     await chrome.storage.local.set({includeEnglish: $('include-english').checked});

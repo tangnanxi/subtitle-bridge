@@ -1,7 +1,7 @@
 (function (root) {
   'use strict';
   const API = 'https://api.thesubtitledb.org';
-  const CLIENT = 'subtitle-bridge/0.3.6';
+  const CLIENT = 'subtitle-bridge/0.3.7';
   const languages = {
     zh: 'Simplified Chinese', zt: 'Traditional Chinese', en: 'English',
     es: 'Spanish', sp: 'Spanish (Spain)', ea: 'Spanish (Latin America)',
@@ -55,11 +55,12 @@
         return {...primary.value, notice: 'The English lookup matched a different title. Showing selected-language results only.'};
       }
       const seen = new Set();
+      const selectedCodes = new Set(language.split(','));
       const rows = [...primary.value.rows, ...english.value.rows].filter(row => {
         if (seen.has(row.url)) return false;
         seen.add(row.url); return true;
-      }).sort((a, b) => Number(b.bilingualHint) - Number(a.bilingualHint)
-        || Number(a.languageCode === 'en') - Number(b.languageCode === 'en'));
+      }).sort((a, b) => Number(!selectedCodes.has(a.languageCode)) - Number(!selectedCodes.has(b.languageCode))
+        || Number(b.bilingualHint) - Number(a.bilingualHint));
       return {title: primary.value.title || english.value.title, rows, total: primary.value.total + english.value.total};
     }
     const episode = query.match(/\bS(\d{1,3})\s*E(\d{1,3})\b/i);
@@ -81,8 +82,10 @@
     try { data = JSON.parse(new TextDecoder().decode(await readBytes(response, 2 * 1024 * 1024))); }
     catch (error) { if (error instanceof SyntaxError) throw new Error('The subtitle source returned invalid data. Try again later.'); throw error; }
     const matchedTitle = [data.title?.name, data.title?.year].filter(Boolean).join(' · ');
+    const selectedCodes = new Set(language.split(','));
     const rows = (Array.isArray(data.subtitles?.items) ? data.subtitles.items : []).filter(item =>
       /^(srt|vtt|ass|ssa)$/i.test(item.format || '') && typeof item.download_url === 'string'
+      && (!language || selectedCodes.has(item.language))
     ).flatMap(item => {
       try { safeDownload(item.download_url); } catch { return []; }
       const name = item.release_name || matchedTitle || `Subtitle ${item.id}`;

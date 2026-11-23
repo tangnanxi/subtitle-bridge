@@ -99,7 +99,7 @@
     const family = name => String(name).toLowerCase().match(/blu[ ._-]?ray|web|dvd|r5/)?.[0].replace(/[ ._-]/g, '') || '';
     const score = row => [...tokens(row.name)].filter(token => selected.has(token)).length * 20
       + (family(primary.name) && family(primary.name) === family(row.name) ? 12 : 0);
-    return rows.filter(row => row.languageCode === 'en' && row.url !== primary.url
+    return rows.filter(row => row.languageCode === 'en' && !row.bilingualHint && row.url !== primary.url
       && !/commentary/i.test(row.name)
       && !(primary.fps && row.fps && Math.abs(Number(primary.fps) - Number(row.fps)) > .1))
       .map(row => ({row, score: score(row)})).sort((a, b) => b.score - a.score).map(item => item.row);

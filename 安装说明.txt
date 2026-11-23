@@ -1,9 +1,9 @@
-字幕桥 0.3.6 — Chrome / Microsoft Edge 网页电影外挂字幕
+字幕桥 0.3.7 — Chrome / Microsoft Edge 网页电影外挂字幕
 
 本版无需注册字幕网站、填写 Token 或配置密钥。只有工具栏弹窗，无需运行网站或服务器。
 
 安装或更新
-1. 解压 subtitle-bridge-chrome-edge-v0.3.6.zip。
+1. 解压 subtitle-bridge-chrome-edge-v0.3.7.zip。
 2. Chrome 打开 chrome://extensions；Edge 打开 edge://extensions。
 3. 开启“开发者模式”，点击“加载已解压的扩展程序”。
 4. 选择解压后的 subtitle-bridge 文件夹，里面应能看到 manifest.json。
@@ -55,3 +55,5 @@ https://thesubtitledb.org
 0.3.5 图标更新：仅保留单个蓝色视频图标，移除灰色叠片。
 
 0.3.6 语言扩展：新增西班牙语、葡萄牙语、法语、德语、意大利语、俄语、阿拉伯语等，共 28 个语言选项及 All languages。西班牙语同时查询通用 / 西班牙 / 拉美代码，葡萄牙语同时查询通用 / 巴西代码；新增语言支持保存偏好和 Include English。资源是否存在取决于字幕源。
+
+0.3.7 语言排序修复：先显示所选语言，再显示英文补充；过滤不属于所选语言的接口返回项；切换语言后清除旧搜索结果。自动英文配对避开已标为双语的补充文件，避免混入第三种语言。

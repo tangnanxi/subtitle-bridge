@@ -143,10 +143,10 @@ test('Bilingual filenames rank first only when Include English is enabled; dual 
   ]}}));
   try {
     const paired=await source.search('Movie','zh,zt',true);
-    assert.deepEqual(paired.rows.map(row=>row.id),[3,4,2,1]);
+    assert.deepEqual(paired.rows.map(row=>row.id),[3,2,1]);
     assert.equal(paired.rows.find(row=>row.id===2).bilingualHint,false);
-    assert.equal(paired.rows.find(row=>row.id===4).bilingualHint,true);
-    assert.deepEqual((await source.search('Movie','zh,zt',false)).rows.map(row=>row.id),[1,2,3,4]);
+    assert.equal((await source.search('Movie','ja',true)).rows.find(row=>row.id===4).bilingualHint,true);
+    assert.deepEqual((await source.search('Movie','zh,zt',false)).rows.map(row=>row.id),[2,3]);
   } finally {global.fetch=original;}
 });
 
@@ -179,9 +179,31 @@ test('English matching prefers the selected release group and rejects commentary
     {name:'Zombieland.2009.720p.BluRay.x264-CROSSBOW',languageCode:'en',url:'b'},
     {name:'Zombieland.CROSSBOW.COMMENTARY',languageCode:'en',url:'c'},
     {name:'Zombieland.CROSSBOW',languageCode:'en',url:'d',fps:25},
-    {name:'Zombieland.CROSSBOW',languageCode:'zh',url:'e'}
+    {name:'Zombieland.CROSSBOW',languageCode:'zh',url:'e'},
+    {name:'Zombieland.CROSSBOW.CHS&ENG',languageCode:'en',url:'f',bilingualHint:true}
   ];
   assert.deepEqual(S.englishCandidates(rows,primary).map(row=>row.url),['b','a']);
   assert.equal(S.similarDuration([{end:6000}],[{end:6001}]),true);
   assert.equal(S.similarDuration([{end:6000}],[{end:5760}]),false);
+});
+
+
+test('Selected Portuguese ranks above Chinese-English files returned as English', async () => {
+  const original=global.fetch;
+  const items=[
+    {id:1,release_name:'校园之外(简英).Off Campus S1',language:'en',format:'srt',download_url:'https://api.thesubtitledb.org/get/1'},
+    {id:2,release_name:'Off.Campus.WEB-DL',language:'pb',format:'srt',download_url:'https://api.thesubtitledb.org/get/2'},
+    {id:3,release_name:'Off.Campus.English',language:'en',format:'srt',download_url:'https://api.thesubtitledb.org/get/3'},
+    {id:4,release_name:'Off.Campus.Chinese',language:'zh',format:'srt',download_url:'https://api.thesubtitledb.org/get/4'}
+  ];
+  // Deliberately ignore the API filter to verify the client rejects leaked languages.
+  global.fetch=async()=>new Response(JSON.stringify({title:{name:'Off Campus'},subtitles:{items}}));
+  try {
+    const result=await source.search('Off Campus S01E01','pt,pb',true);
+    assert.deepEqual(result.rows.map(row=>row.id),[2,1,3]);
+    assert.equal(result.rows[0].language,'Portuguese (Brazil)');
+    assert.deepEqual(S.englishCandidates(result.rows,result.rows[0]).map(row=>row.id),[3]);
+    assert.deepEqual((await source.search('Off Campus','pt,pb',false)).rows.map(row=>row.id),[2]);
+    assert.equal((await source.search('Off Campus','',false)).rows.length,4);
+  } finally {global.fetch=original;}
 });

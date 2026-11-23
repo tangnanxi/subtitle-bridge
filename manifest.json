@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Subtitle Bridge",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Find existing subtitles without an account or API key and load them onto web videos. Supports SRT, VTT, ASS and timing adjustment.",
   "minimum_chrome_version": "120",
   "permissions": [

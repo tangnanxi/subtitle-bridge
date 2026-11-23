@@ -72,7 +72,7 @@
 安装时不需要写代码、安装 Node.js 或运行任何服务。
 
 1. 打开 [Releases 下载页](https://github.com/tangnanxi/subtitle-bridge/releases/latest)。
-2. 在 **Assets** 里下载 **`subtitle-bridge-chrome-edge-v0.3.6.zip`**，然后解压。
+2. 在 **Assets** 里下载 **`subtitle-bridge-chrome-edge-v0.3.7.zip`**，然后解压。
 3. 找到解压后的 **`subtitle-bridge`** 文件夹，里面应该能看到 **`manifest.json`**。
 4. 在浏览器地址栏打开对应的扩展管理页：
 
@@ -124,7 +124,7 @@
 
 在 **Subtitle language** 里选择中文，并保持 **Include English** 勾选，再搜索和加载。西班牙语、葡萄牙语、日语、韩语等也可以使用同一个勾选框。
 
-- 文件名提示有双语的字幕会优先显示。
+- 所选语言的字幕排在前面，英文补充排在后面；文件名中的双语提示只在同一语言分组内影响排序。自动配对英文时会跳过标为双语的补充文件，避免额外混入第三种语言；仍可手动选择这些文件。
 - 如果识别到所选文件本身已有双语对白，插件会直接使用这一份，不再重复添加英文。
 - 如果所选文件只有主语言，点击 **Load subtitles** 后会尝试自动配对英文，一起加载。
 - 底部显示 **`2 files`**，说明当前加载了两份字幕文件。
