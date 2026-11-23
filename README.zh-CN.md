@@ -12,9 +12,9 @@
 
 [下载最新版](https://github.com/tangnanxi/subtitle-bridge/releases/latest) · [安装教程](#一安装插件) · [开始使用](#二打开视频查找字幕) · [常见问题](#常见问题)
 
-![演示视频中同时显示中文和英语字幕](docs/images/05-bilingual.png)
+![Off Campus S01E01 实际播放时同时显示中文和英语字幕](docs/images/06-real-playback-off-campus.png)
 
-*文中的操作截图来自真实插件界面，使用自制演示视频和明确标注的示例搜索结果，不包含电影正片，也不代表某部电影一定有对应字幕。*
+*实际播放示例：在 Off Campus S01E01 中同时显示中文和英语字幕。下方安装与弹窗教程使用自制演示视频及明确标注的示例搜索结果；具体字幕资源和同步效果取决于所选版本。*
 
 ## 能做什么
 

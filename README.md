@@ -12,9 +12,9 @@ English · [简体中文](README.zh-CN.md)
 
 [Download the latest version](https://github.com/tangnanxi/subtitle-bridge/releases/latest) · [Install](#1-install-the-extension) · [Watch with subtitles](#2-find-subtitles-for-your-video) · [Troubleshooting](#troubleshooting)
 
-![Chinese and English subtitles displayed together on a demonstration video](docs/images/05-bilingual.png)
+![Chinese and English subtitles displayed together during playback of Off Campus S01E01](docs/images/06-real-playback-off-campus.png)
 
-*Screenshots use a synthetic video and clearly labeled example search results. They demonstrate the real extension UI; they do not promise subtitle availability for a particular film.*
+*Real playback example: Chinese and English subtitles shown together in Off Campus S01E01. The installation and popup walkthrough below uses a synthetic video and clearly labeled sample search results. Subtitle availability and timing depend on the selected release.*
 
 ## What it does
 
